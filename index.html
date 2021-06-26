@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="Firefox">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Antonio' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Unica+One&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Landing</title>
+</head>
+<body>
+    
+    <h1 class="ml1">
+        <span class="text-wrapper">
+            <span class="line line1"></span>
+            <span class="letters">THURSDAY</span>
+            <span class="line line2"></span>
+        </span>
+    </h1>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    
+    <script>
+        const welcomes =    ["Hello World!",
+                            "こんにちは世界!",
+                            "Hallo Welt!",
+                            "Привет мир!",
+                            "Halló heimur!",
+                            "你好，世界",
+                            "नमस्ते दुनिया",
+                            "Γειά σου Κόσμε",
+                            "Hei Verden"
+                            ];
+        var textWrapper = document.querySelector('.ml1 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        
+        var loopBegan = 0;
+        var loopCompleted = 0;
+
+        anime({
+                targets: '.ml1 .letters',
+                loop : true,
+                loopBegin: function (anim) {
+                    loopBegan++;
+                },
+                loopComplete: function (anim) {
+                    loopCompleted++;
+                },
+                innerHTML: welcomes,
+                duration : 4300 * welcomes.length 
+            });
+        anime.timeline({ loop: true })
+            .add({
+                targets: '.ml1 .letter',
+                scale: [0.3, 1],
+                opacity: [0, 1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 1600,
+                delay: (el, i) => 70 * (i + 1)
+            }).add({
+                targets: '.ml1 .line',
+                scaleX: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 700,
+                offset: '-=875',
+                delay: (el, i, l) => 80 * (l - i)
+            }).add({
+                targets: '.ml1',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1200
+            });
+            console.log(loopBegan)
+    </script>
+
+    <h1 id="Heading">Arkavo Hait</h1>
+    <h3 id="description">Physics, Computation, Hardware, Literature, Games</h3>
+
+    <p id="about">Physics graduate student. Actively looking for new oppurtunities</p>
+    
+    
+
+    
+</body>
+</html>
