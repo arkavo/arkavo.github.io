@@ -85,22 +85,40 @@
     </script>
     </div>
 
+    <section class="table-section_empty">
+        <div class="img-table_wrapper loading stopped">
+            <span class="background-gradient"></span>
+        </div>
+        <h2 class="title">\(>_<)/<span class="point-animated">.</span></h2>
+    </section>
+
+    <script>
+        var circleAnimation = anime({
+                targets: ".img-table_wrapper.loading > span",
+                scale: ["0.8", "1.4"],
+                opacity: ["1", 0],
+                easing: "easeOutCubic",
+                duration: 1500,
+                loop: true
+            });
+
+            var pointAnimation = anime({
+                targets: ".point-animated",
+                translateX: [
+                    { value: 5, duration: 1, delay: 499 },
+                    { value: 10, duration: 1, delay: 499 },
+                    { value: 15, duration: 1, delay: 499 }
+                ],
+                loop: true,
+                easing: "easeOutCubic"
+            });
+    </script>
+
     <h1 id="Heading">Arkavo Hait</h1>
     <h3 id="description">Physics, Computation, Hardware, Literature, Games</h3>
 
     <p id="about">Physics graduate student. Actively looking for new oppurtunities</p>
     
-    <div class="blog_post">
-        <h2 class="blog_heading">poissonCUDA</h2>
-        <p class="blog_content">
-            A CUDA application made to solve the poisson equation on a 3D grid.<br>
-            This program was built to compare execution times for a sample simulation<br>
-            with variable number of threads with same number of cores.<br>
-        </p>
-    </div>
-
-    <p></p>
-
     
 </body>
 </html>
